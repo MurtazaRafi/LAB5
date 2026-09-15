@@ -1,16 +1,3 @@
-## Part of the lesson
-
-# total = 100
-# counter = 1
-# def add_tax():
-#     counter = counter
-#     global total
-#     total = total * 1.25
-#     return counter
-
-# print(add_tax())
-
-## The lab 
 # LAB 5
 # Part A - Scope 
 # 1.
