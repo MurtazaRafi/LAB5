@@ -125,4 +125,69 @@ def introduce(*tuple):
         print(element, "-")
 introduce(*tuple) # OBS *tuple och ej bara tuple
 
-# 3
+# 3.
+def example(first, *middle, last = [8, 9, 10]):
+    print(first)
+    print(middle)
+    print(last)
+lst =  [3,4,5,6,7]
+example("Murtaza", lst, last = [100, 200] )
+
+# 4.
+# In the function it means it can take x number of parameters
+# When calling it means to unpack it to several arguments 
+
+# part D - **kwargs
+# 1.
+def show_profile(**info):
+    for key, value in info.items():
+        print(key, value)
+
+show_profile(name = "Murtaza", age =  33, status = True)
+# 2.
+def create_user(username, **details):
+    dic = {}
+    dic["username"] = username
+
+    for key, value in details.items():
+        dic[key] = value
+    return dic
+print(create_user("Murtaza", age =  33, status = True))
+# 3.
+def build_product(name, price, **metadata):
+    dic = {}
+    dic["name"] = name
+    dic["price"] = price
+    for key, data in metadata.items():
+        dic[key] = data
+    return dic
+print(build_product("Murtaza", 500, status = True, is_active = True))
+
+# 4.
+def configure(**settings):
+    dic = {}
+    for key, value in settings.items():
+        if settings[key] is not None:
+            dic[key] = value
+
+    return dic
+
+
+print(configure(default = True, color = None, background = "white"))
+
+# 5.
+def show_information(**kwargs):
+    for key, value in kwargs.items():
+        print(key,":", value)
+
+print(show_information(name = "Adam", age = 33, city = "Stockholm", language = "english"))
+
+# part E - Combining parameters
+# 1.
+def log_event(event_type, *messages, **metadata):
+    dic = {}
+    dic["event_type"] = event_type
+    # How to add a tuples in to a dictionary ???
+    # Såhär??
+    for message in messages:
+        dic[message] = message #????
