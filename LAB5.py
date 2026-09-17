@@ -187,7 +187,33 @@ print(show_information(name = "Adam", age = 33, city = "Stockholm", language = "
 def log_event(event_type, *messages, **metadata):
     dic = {}
     dic["event_type"] = event_type
-    # How to add a tuples in to a dictionary ???
-    # Såhär??
+
+    i = 0
     for message in messages:
-        dic[message] = message #????
+        dic["message " + str(i)] = message
+        i = i + 1 
+
+    for key, val in metadata.items():
+        dic[key] = val
+
+    return dic
+
+message1 = "Hello"
+message2 = "World"
+log = log_event("Warning", message1, message2, data1 = "meta data 1", data2 = "meta data 2")
+print(log)
+
+# 2.
+def calculate_order(customer, *prices, **options):
+    total = 0
+    for price in prices:
+        print(price)
+        total += price
+    return total * options.get("discount") + options.get("shipping_fee")
+
+customer = "Volvo"
+prices = [1e6, 2e6,3e6]
+options = {"discount": 0.5, "shipping_fee": 5e6}
+
+print(calculate_order(customer, *prices, **options))
+
