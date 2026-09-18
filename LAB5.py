@@ -217,3 +217,62 @@ options = {"discount": 0.5, "shipping_fee": 5e6}
 
 print(calculate_order(customer, *prices, **options))
 
+# 3.
+
+# 4.
+
+# Part F - Applied challange: Report Builder
+# 1.
+def create_report(title, *sections, **metadata):
+    dic = {}
+
+    dic["title"] = title
+
+    i = 1
+    j = 1
+    for section in sections:
+         if isinstance(section, str):
+            dic["section " + str(i)] = section
+            i += 1
+         elif isinstance(section, dict):
+             dic["teacher " + str(j)] = section.get("teacher " + str(j))
+             j += 1
+
+    for key, val in metadata.items():
+        dic[key] = val
+
+    return dic
+
+# each section a string or dictionary
+department = "Physics"
+teacher1 = {"teacher 1": "Martin"}
+teacher2 = {"teacher 2": "Maria"}
+
+report = create_report("Information about department", department, teacher1, teacher2, course="Python")
+print(report)
+
+metadata = {"author" : "David", "department" : "R&D", "version" : 1.1, "confindential" : 2, "date" : "2026-09-18"}
+
+report_2 = create_report("Information about department", department, teacher1, teacher2, **metadata)
+
+print(report_2)
+
+def summarize_report(report : dict):
+    print(f"""summary: title: {report["title"]}""")
+    for key, val in report.items():
+        print(key, val)
+
+summarize_report(report_2)
+
+# 5
+def count_words(*sections):
+    words = 0
+    for section in sections:
+        if isinstance(section, str):
+            words += len(section.split(" "))
+
+    return words
+
+print(count_words("Hej jag heter", 10, "vad heter du?"))
+    
+
